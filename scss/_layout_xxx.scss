@@ -1,0 +1,102 @@
+@charset "UTF-8";
+
+/*
+#layout_xxx
+===============================================
+- サイト全体で使いまわせるレイアウトモジュール
+*/
+
+/* ###container
+- サイト共通幅・中央寄せコンテナ
+```
+<div class="l-container ">
+l-container
+</div>
+```
+*/
+
+.l-container {
+  margin: 0 auto;
+  width: $contentWidth;
+  border: 1px solid #000;
+    @include mq {
+    width: 94%;
+  }
+}
+/* ###l-col2
+- 2カラムレイアウト
+```
+<ul class="l-col2">
+  <li class="col"><img src="http://placehold.it/350x150?text=image"></li>
+  <li class="col"><img src="http://placehold.it/350x150?text=image"></li>
+  <li class="col"><img src="http://placehold.it/350x150?text=image"></li>
+  <li class="col"><img src="http://placehold.it/350x150?text=image"></li>
+  <li class="col"><img src="http://placehold.it/350x150?text=image"></li>
+  <li class="col"><img src="http://placehold.it/350x150?text=image"></li>
+</ul>
+```
+*/
+
+.l-col2 {
+  @extend %col2wrap;
+  .col {
+    @extend %col2;
+    margin-bottom: 20px;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+/* ###l-col3
+- 2カラムレイアウト
+```
+<ul class="l-col3">
+  <li class="col"><img src="http://placehold.it/350x150?text=image"></li>
+  <li class="col"><img src="http://placehold.it/350x150?text=image"></li>
+  <li class="col"><img src="http://placehold.it/350x150?text=image"></li>
+  <li class="col"><img src="http://placehold.it/350x150?text=image"></li>
+  <li class="col"><img src="http://placehold.it/350x150?text=image"></li>
+  <li class="col"><img src="http://placehold.it/350x150?text=image"></li>
+</ul>
+```
+*/
+
+.l-col3 {
+  @extend %col3wrap;
+  .col {
+    @extend %col3;
+    margin-bottom: 20px;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+/* ###l-col4
+- 4カラムレイアウト
+```
+<ul class="l-col4">
+  <li class="col"><img src="http://placehold.it/350x150?text=image"></li>
+  <li class="col"><img src="http://placehold.it/350x150?text=image"></li>
+  <li class="col"><img src="http://placehold.it/350x150?text=image"></li>
+  <li class="col"><img src="http://placehold.it/350x150?text=image"></li>
+  <li class="col"><img src="http://placehold.it/350x150?text=image"></li>
+  <li class="col"><img src="http://placehold.it/350x150?text=image"></li>
+</ul>
+```
+*/
+
+.l-col4 {
+  @extend %col4wrap;
+  .col {
+    @extend %col4;
+    margin-bottom: 20px;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}

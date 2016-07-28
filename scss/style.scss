@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+// setting
+@import 'setting';
+
+// base
+@import 'base/normalize';
+@import 'base/reset';
+
+// common
+@import 'common';
+
+// layouts
+@import 'layout_xxx';
+
+// modules
+@import 'module_xxx';
+
+// pages
+@import 'page_xxx';
+
+// plugins
+@import 'plugin/bxslider';
+
+// print
+@import 'print';
+
+/*@ sourceMappingURL=style.css.map */

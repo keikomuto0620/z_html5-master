@@ -1,0 +1,62 @@
+@charset "UTF-8";
+
+/*
+#page xxx
+===============================================
+- ページ固有の設定
+- 他ページでの利用が発生したら共通モジュール化してmodule.scssに移動する
+*/
+
+// ページ目次
+// home
+// show list
+
+/* ##home
+
+/* ###entries
+```
+  <ul class="entries">
+  <li><a href=""><img src="http://placehold.it/350x150">text</a></li>
+  <li><a href=""><img src="http://placehold.it/350x150">text</a></li>
+  <li><a href=""><img src="http://placehold.it/350x150">text</a></li>
+  </ul>
+```
+ */
+
+.entries {
+  li {
+    position: relative;
+    margin-bottom: 15px;
+    padding-left: 35px;
+  }
+  img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+  }
+}
+
+
+/* ##showList
+----------------------------------------------- */
+
+.showList li {
+  position: relative;
+  .btnMore {
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+    line-height: 1.5;
+    margin: 0;
+  }
+  @include mq {
+    overflow: hidden;
+    line-height: 2;
+    .btnMore {
+      position: relative;
+    }
+  }
+}

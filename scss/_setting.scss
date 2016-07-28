@@ -1,0 +1,59 @@
+@charset "UTF-8";
+
+//変数、mixin, extend, keyfrme animation
+
+//colors
+$mainColor: #5f1985;
+$mainColor02: #724f85;
+$mainColor03: #d68aff;
+$subColor:#E50012;
+$subColor02:#FFF000;
+
+$breakPoint:768px;
+$contentWidth:980px;
+
+//mixin
+@mixin mq {
+	@media only screen and (max-width: $breakPoint) {
+		@content
+	}
+}
+
+@mixin fz($size) {
+	font-size: $size + px;
+	font-size: ($size / 10) * 1rem;
+}
+
+//extend
+%col2wrap {
+	display: flex;
+	flex-flow: row wrap;
+	margin-left: -2%;
+}
+
+%col2 {
+	width: 48%;
+	margin-left: 2%;
+}
+
+%col3wrap {
+	display: flex;
+	flex-flow: row wrap;
+	margin-left: -2%;
+}
+
+%col3 {
+	margin-left: 2%;
+	width: 31.3333333%;
+}
+
+%col4wrap {
+	display: flex;
+	flex-flow: row wrap;
+	margin-left: -2%;
+}
+
+%col4 {
+	margin-left: 2%;
+	width: 23%;
+}
