@@ -4,6 +4,7 @@
 #common
 ===============================================
 - サイト全体の共通設定
+- レスポンシブ対応
 - 全ページ共通部品 (header, footer, sidebar, etc.)
 */
 
@@ -33,6 +34,22 @@ a {
     text-decoration: underline;
   }
 }
+
+/* responsive display */
+
+.sp {
+  display: none;
+}
+
+@media screen and (max-width: breakPoint) {
+  .pc {
+    display: none;
+  }
+  .sp {
+    display: block;
+  }
+}
+
 
 // common layout modules -- they are used only once in each page.
 .l-header {}

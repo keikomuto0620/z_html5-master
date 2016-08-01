@@ -1,52 +1,8 @@
 @charset "UTF-8";
-.l-col2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-flow: row wrap;
-  -ms-flex-flow: row wrap;
-  flex-flow: row wrap;
-  margin-left: -2%;
-}
-
-.l-col2 .col {
-  width: 48%;
-  margin-left: 2%;
-}
-
-.l-col3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-flow: row wrap;
-  -ms-flex-flow: row wrap;
-  flex-flow: row wrap;
-  margin-left: -2%;
-}
-
-.l-col3 .col {
-  margin-left: 2%;
-  width: 31.3333333%;
-}
-
-.l-col4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-flow: row wrap;
-  -ms-flex-flow: row wrap;
-  flex-flow: row wrap;
-  margin-left: -2%;
-}
-
-.l-col4 .col {
-  margin-left: 2%;
-  width: 23%;
-}
-
+/*
+#normalize.css
+===============================================
+*/
 article,
 aside,
 details,
@@ -279,6 +235,10 @@ input[type="checkbox"], input[type="radio"] {
   padding: 0;
 }
 
+/*
+#reset.css
+===============================================
+*/
 a:active,
 a:hover {
   outline: 0;
@@ -334,9 +294,18 @@ img {
 }
 
 /*
+#setting
+===============================================
+- キーカラーの設定
+- コンテンツ幅、ブレイクポイントの設定
+- mixinの設定
+- キーフレームアニメーションの設定
+*/
+/*
 #common
 ===============================================
 - サイト全体の共通設定
+- レスポンシブ対応
 - 全ページ共通部品 (header, footer, sidebar, etc.)
 */
 html {
@@ -366,6 +335,20 @@ a:hover {
   text-decoration: underline;
 }
 
+/* responsive display */
+.sp {
+  display: none;
+}
+
+@media screen and (max-width: breakPoint) {
+  .pc {
+    display: none;
+  }
+
+  .sp {
+    display: block;
+  }
+}
 /*
 #layout_xxx
 ===============================================
@@ -390,6 +373,18 @@ l-container
   }
 }
 
+/* ##グリッドレイアウト */
+.l-col2, .l-col3, .l-col4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  margin-left: -2%;
+}
+
 /* ###l-col2
 - 2カラムレイアウト
 ```
@@ -404,11 +399,9 @@ l-container
 ```
 */
 .l-col2 .col {
+  width: 48%;
+  margin-left: 2%;
   margin-bottom: 20px;
-}
-.l-col2 .col img {
-  width: 100%;
-  height: auto;
 }
 
 /* ###l-col3
@@ -425,11 +418,9 @@ l-container
 ```
 */
 .l-col3 .col {
+  margin-left: 2%;
+  width: 31.3333333%;
   margin-bottom: 20px;
-}
-.l-col3 .col img {
-  width: 100%;
-  height: auto;
 }
 
 /* ###l-col4
@@ -446,11 +437,9 @@ l-container
 ```
 */
 .l-col4 .col {
+  margin-left: 2%;
+  width: 23%;
   margin-bottom: 20px;
-}
-.l-col4 .col img {
-  width: 100%;
-  height: auto;
 }
 
 /*
@@ -458,28 +447,6 @@ l-container
 ===============================================
 - サイト全体で使いまわせるモジュール
 */
-/* ##common class
-- ヘルパークラス、ユーティリティクラスなど
-*/
-.ofHiddn {
-  overflow: hidden;
-}
-
-.dispNone {
-  display: none;
-}
-
-.dd_flat {
-  display: inline-block;
-  margin-right: .5rem;
-}
-
-.bdr_red_box {
-  border: 1px solid #E50012;
-  padding: 1rem;
-  margin: 2rem 0;
-}
-
 /* ##headings
 - 見出し
 */
@@ -735,6 +702,30 @@ l-container
   color: #fff;
   display: block;
   padding: 10px;
+}
+
+/*
+#utility
+===============================================
+- ユーティリティクラス
+*/
+.ofHiddn {
+  overflow: hidden;
+}
+
+.dispNone {
+  display: none;
+}
+
+.dd_flat {
+  display: inline-block;
+  margin-right: .5rem;
+}
+
+.bdr_red_box {
+  border: 1px solid #E50012;
+  padding: 1rem;
+  margin: 2rem 0;
 }
 
 /*@ sourceMappingURL=style.css.map */

@@ -6,31 +6,6 @@
 - サイト全体で使いまわせるモジュール
 */
 
-
-/* ##common class
-- ヘルパークラス、ユーティリティクラスなど
-*/
-
-.ofHiddn {
-  overflow: hidden;
-}
-
-.dispNone {
-  display: none;
-}
-
-.dd_flat {
-  display: inline-block;
-  margin-right: .5rem;
-}
-
-.bdr_red_box {
-  border: 1px solid $subColor;
-  padding: 1rem;
-  margin: 2rem 0;
-}
-
-
 /* ##headings
 - 見出し
 */

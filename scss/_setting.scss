@@ -1,59 +1,32 @@
 @charset "UTF-8";
 
-//変数、mixin, extend, keyfrme animation
+/*
+#setting
+===============================================
+- キーカラーの設定
+- コンテンツ幅、ブレイクポイントの設定
+- mixinの設定
+- キーフレームアニメーションの設定
+*/
 
 //colors
 $mainColor: #5f1985;
-$mainColor02: #724f85;
-$mainColor03: #d68aff;
 $subColor:#E50012;
-$subColor02:#FFF000;
+$bgColor:#000;
 
+//content width
 $breakPoint:768px;
 $contentWidth:980px;
+$contentWidthSP:94%;
 
 //mixin
 @mixin mq {
-	@media only screen and (max-width: $breakPoint) {
-		@content
-	}
+  @media only screen and (max-width: $breakPoint) {
+    @content
+  }
 }
 
 @mixin fz($size) {
-	font-size: $size + px;
-	font-size: ($size / 10) * 1rem;
-}
-
-//extend
-%col2wrap {
-	display: flex;
-	flex-flow: row wrap;
-	margin-left: -2%;
-}
-
-%col2 {
-	width: 48%;
-	margin-left: 2%;
-}
-
-%col3wrap {
-	display: flex;
-	flex-flow: row wrap;
-	margin-left: -2%;
-}
-
-%col3 {
-	margin-left: 2%;
-	width: 31.3333333%;
-}
-
-%col4wrap {
-	display: flex;
-	flex-flow: row wrap;
-	margin-left: -2%;
-}
-
-%col4 {
-	margin-left: 2%;
-	width: 23%;
+  font-size: $size + px;
+  font-size: ($size / 10) * 1rem;
 }

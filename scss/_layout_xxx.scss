@@ -6,6 +6,7 @@
 - サイト全体で使いまわせるレイアウトモジュール
 */
 
+
 /* ###container
 - サイト共通幅・中央寄せコンテナ
 ```
@@ -19,10 +20,17 @@ l-container
   margin: 0 auto;
   width: $contentWidth;
   border: 1px solid #000;
-    @include mq {
-    width: 94%;
+  @include mq {
+    width: $contentWidthSP;
   }
 }
+/* ##グリッドレイアウト */
+%colwrap {
+  display: flex;
+  flex-flow: row wrap;
+  margin-left: -2%;
+}
+
 /* ###l-col2
 - 2カラムレイアウト
 ```
@@ -38,16 +46,14 @@ l-container
 */
 
 .l-col2 {
-  @extend %col2wrap;
+  @extend %colwrap;
   .col {
-    @extend %col2;
+    width: 48%;
+    margin-left: 2%;
     margin-bottom: 20px;
-    img {
-      width: 100%;
-      height: auto;
-    }
   }
 }
+
 
 /* ###l-col3
 - 2カラムレイアウト
@@ -64,16 +70,14 @@ l-container
 */
 
 .l-col3 {
-  @extend %col3wrap;
+  @extend %colwrap;
   .col {
-    @extend %col3;
+    margin-left: 2%;
+    width: 31.3333333%;
     margin-bottom: 20px;
-    img {
-      width: 100%;
-      height: auto;
-    }
   }
 }
+
 
 /* ###l-col4
 - 4カラムレイアウト
@@ -90,13 +94,10 @@ l-container
 */
 
 .l-col4 {
-  @extend %col4wrap;
+  @extend %colwrap;
   .col {
-    @extend %col4;
+    margin-left: 2%;
+    width: 23%;
     margin-bottom: 20px;
-    img {
-      width: 100%;
-      height: auto;
-    }
   }
 }
