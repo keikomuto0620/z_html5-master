@@ -16,33 +16,28 @@
 #命名規則
 ##レイアウトモジュール 命名規則
 - 単語の区切りはキャメルケース
-
-.l-moduleName
+ - .l-moduleName
 
 ##モジュール 命名規則
 - 単語の区切りはキャメルケース
-- module（=block）とelementの区切りは__
-- module・elementとmodifierの区切りは--
+ - module（=block）とelementの区切りは__
+ - module・elementとmodifierの区切りは--
 
-.moduleName__elementName--modifierName
+例： .moduleName__elementName--modifierName
 
 - jsによる状態の変化を表すときはプレフィクス-isをつける
+ - .is-inview 画面内に存在する状態／画面内に要素が入ったら不透明度を上げる [category.html、モーダルウィンドウ]
+ - .is-fixed 画面に固定された状態／ソートボタンを画面上部に固定する [category.html]
+ - .is-wide 画面幅が1440pxより大きい時／ソートボタンを中央寄せにする [category.html]
+ - .is-vertical 画像が縦長の時／ブレイクポイント以下でのデバイス表示時に画像の縦横比を判定 [category.html]
+ - .is-checked ソートボタンがアクティブな状態 [category.html]
 
-.is-active
+- jsで制御する要素にはプレフィクス-jsをつけ、スタイルは適用しない。操作する要素がページ内に一つしかないときはIDセレクタを使用する
+ - .js-menu
 
-.is-current
-
-- jsで制御する要素にはプレフィクス-jsをつけ、スタイルは適用しない。なるべくIDセレクタを使用する
-
-.js-menu
-
-
-
-##画像ファイル名 命名規則
-
-役割＿モジュール名＿固有名称（+連番）＿状態
-
-例：　img_header_facebook_hover.png
+#画像ファイル名 命名規則
+- 役割＿モジュール名＿固有名称（+連番）＿状態
+ - img_header_facebook_hover.png
 
 ###役割（画像プレフィクス）
 - btn … ボタン
@@ -54,3 +49,16 @@
 - txt … テキスト画像
 - hero … メインビジュアル
 - ico … アイコン
+
+#jsファイル構成
+- 共通
+ - common.js
+
+- ページ固有
+ - index.js
+ - category.js
+ - case.js
+
+- プラグイン
+ - jquery.inview.min.js 画面内に要素が入っているかどうかの判定 [category.html,xxx.html]
+ - isotope.pkgd.min.js 要素のソート [category.html]
