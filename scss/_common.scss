@@ -41,7 +41,7 @@ a {
   display: none;
 }
 
-@media screen and (max-width: breakPoint) {
+@media screen and (max-width: $breakPoint) {
   .pc {
     display: none;
   }
