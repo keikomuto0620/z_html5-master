@@ -137,6 +137,12 @@
   }
 }
 
+.btn--disabled {
+  pointer-events: none;
+  &:hover {
+    background-color: transparent;
+  }
+}
 
 /* ##boxs */
 
