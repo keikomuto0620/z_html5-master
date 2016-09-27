@@ -21,9 +21,10 @@ body {
   line-height: 1;
   min-width: $contentWidth;
   @include mq {
+    width: 100%;
     min-width: 100%;
+    overflow: hidden;
     -webkit-text-size-adjust: 100%;
-    // width: 100%;
     // min-width: auto;
     font-size: 1.3rem;
   }
@@ -37,6 +38,7 @@ a {
     text-decoration: underline;
   }
 }
+
 
 /* responsive display */
 
@@ -53,7 +55,6 @@ a {
   }
 }
 
-
 // common layout modules -- they are used only once in each page.
 .l-header {}
 
@@ -61,6 +62,20 @@ a {
 
 .l-wrapper {}
 
-.l-main {}
+.l-main {
+  display: block;
+}
 
 .l-side {}
+
+.btnPageUp {
+  background-image: url("../images/bg_pagetop.png");
+  background-repeat: no-repeat;
+  width: 162px;
+  height: 59px;
+  position: absolute;
+  top: -59px;
+  right: 0;
+  display: block;
+  text-align: center;
+}
