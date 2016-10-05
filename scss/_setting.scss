@@ -19,9 +19,31 @@ $breakPoint:768px;
 $contentWidth:980px;
 $contentWidthSP:94%;
 
+
+//extend
+%gothic {
+  font-family: "游ゴシック", "YuGothic", "ヒラギノ角ゴシック", Hiragino Sans, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif;
+  font-weight: 500;
+}
+
+%replace {
+text-indent: 100%;
+white-space: nowrap;
+overflow: hidden;
+}
+
 //mixin
+
+//media query
 @mixin mq {
   @media only screen and (max-width: $breakPoint) {
+    @content
+  }
+}
+
+//body class
+@mixin kaori {
+  .body--kaori & {
     @content
   }
 }
