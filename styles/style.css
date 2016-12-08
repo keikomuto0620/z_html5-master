@@ -314,16 +314,19 @@ html {
 
 body {
   background-color: #fff;
-  color: #000;
+  color: red;
   font-size: 1.4rem;
   font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", "MS Pゴシック", "MS P Gothic", sans-serif;
-  line-height: 1.6;
+  line-height: 1;
   min-width: 980px;
 }
 @media only screen and (max-width: 768px) {
   body {
     width: 100%;
-    min-width: auto;
+    min-width: 100%;
+    overflow: hidden;
+    -webkit-text-size-adjust: 100%;
+    font-size: 1.3rem;
   }
 }
 
@@ -340,7 +343,7 @@ a:hover {
   display: none;
 }
 
-@media screen and (max-width: breakPoint) {
+@media screen and (max-width: 768px) {
   .pc {
     display: none;
   }
@@ -349,6 +352,22 @@ a:hover {
     display: block;
   }
 }
+.l-main {
+  display: block;
+}
+
+.btnPageUp {
+  background-image: url("../images/bg_pagetop.png");
+  background-repeat: no-repeat;
+  width: 162px;
+  height: 59px;
+  position: absolute;
+  top: -59px;
+  right: 0;
+  display: block;
+  text-align: center;
+}
+
 /*
 #layout_xxx
 ===============================================
@@ -513,6 +532,10 @@ l-container
   -webkit-align-items: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
+  /* align-self: center; */
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
   /* flex: 1; */
   -webkit-box-flex: 1;
   -webkit-flex: 1;
@@ -529,7 +552,6 @@ l-container
 .transition {
   opacity: 0.1;
   -webkit-transform: translate(0, 50px);
-  -ms-transform: translate(0, 50px);
   transform: translate(0, 50px);
   -webkit-transition: all 500ms;
   transition: all 500ms;
@@ -538,7 +560,6 @@ l-container
 /* transform */
 .case .case__photo img {
   -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
 
@@ -661,6 +682,13 @@ l-container
   filter: alpha(opacity=100);
 }
 
+.btn--disabled {
+  pointer-events: none;
+}
+.btn--disabled:hover {
+  background-color: transparent;
+}
+
 /* ##boxs */
 /* ###gmap
 ```
@@ -757,7 +785,6 @@ l-container
 .bx-wrapper .bx-viewport {
   background: #fff;
   -webkit-transform: translatez(0);
-  -ms-transform: translatez(0);
   transform: translatez(0);
 }
 

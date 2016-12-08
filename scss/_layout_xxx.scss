@@ -138,12 +138,13 @@ l-container
   align-items: center;
   /* align-items: baseline; */
   align-items: baseline;
+    /* align-self: center; */
+  align-self: center;
   /* flex: 1; */
   flex: 1;
   /* flex: 0 1 8.33em; */
   flex: 0 1 8.33em;
 }
-
 
 /* transition */
 

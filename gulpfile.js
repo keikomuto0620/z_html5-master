@@ -31,24 +31,18 @@ gulp.task('autoprefixer', function() {
 		.pipe(autoprefixer({
 			// ☆IEは9以上、Androidは4以上、iOS Safariは8以上
 			// その他は最新2バージョンで必要なベンダープレフィックスを付与する設定
-			browsers: ["last 2 versions", "ie >= 9", "Android >= 4","ios_saf >= 8"],
+			browsers: ["last 2 versions", "Android >= 4","ios_saf >= 8"],
 			cascade: false
 		}))
 		.pipe(gulp.dest('styles'));
 });
 //styledocco
-gulp.task('styledocco', function () {
-  gulp.src('**/styles/style.css')
-    .pipe(styledocco({
-      out: 'docs',
-      name: 'style guide'
-    }));
-});
+
 //task
 gulp.task("default", ['server'], function() {
 	gulp.watch('**/scss/**/*.scss', ['compass']);
 	gulp.watch('**/styles/style.css', ['autoprefixer']);
-	gulp.watch(['**/styles/style.css','*.md'], ['styledocco']);
+	gulp.watch(['**/styles/style.css','*.md']);
 	gulp.watch([
 		'**/*.html',
 		'**/*.jpg',
