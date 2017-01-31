@@ -17,31 +17,34 @@ gulp.task('server', function() {
 });
 // compass
 gulp.task('compass', function() {
-	gulp.src('scss/**/*.scss')
+	gulp.src('./scss/*.scss')
 	.pipe(plumber())
 	.pipe(compass({
-		config_file: 'config.rb',
-		css: 'styles/',
-		sass: 'scss/'
-	}));
-});
-//autoprefixer
-gulp.task('autoprefixer', function() {
-	return gulp.src('styles/style.css')
-		.pipe(autoprefixer({
+		config_file: './config.rb',
+		sass: 'scss',
+		css: 'css'
+	}))
+	.pipe(autoprefixer({
 			// ☆IEは9以上、Androidは4以上、iOS Safariは8以上
 			// その他は最新2バージョンで必要なベンダープレフィックスを付与する設定
 			browsers: ["last 2 versions", "Android >= 4","ios_saf >= 8"],
 			cascade: false
 		}))
-		.pipe(gulp.dest('styles'));
+	.pipe(gulp.dest('css'));;
 });
-//styledocco
 
+//styledocco
+gulp.task('styledocco', function () {
+  gulp.src('**/styles/style.css')
+    .pipe(styledocco({
+      out: 'docs',
+      name: 'style guide'
+    }));
+});
 //task
 gulp.task("default", ['server'], function() {
 	gulp.watch('**/scss/**/*.scss', ['compass']);
-	gulp.watch('**/styles/style.css', ['autoprefixer']);
+	gulp.watch(['**/styles/style.css','*.md'], ['styledocco']);
 	gulp.watch(['**/styles/style.css','*.md']);
 	gulp.watch([
 		'**/*.html',

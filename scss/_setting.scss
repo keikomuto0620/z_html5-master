@@ -19,8 +19,25 @@ $breakPoint:768px;
 $contentWidth:980px;
 $contentWidthSP:94%;
 
-
 //extend
+%bgWhiteLink {
+  display: block;
+  background-color: #fff;
+}
+
+%linkText {
+  text-decoration: underline;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+%listMarkSq {
+  &:before {
+    content: '■';
+  }
+}
+
 %gothic {
   font-family: "游ゴシック", "YuGothic", "ヒラギノ角ゴシック", Hiragino Sans, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif;
   font-weight: 500;
@@ -33,6 +50,11 @@ overflow: hidden;
 }
 
 //mixin
+
+/*
+  @include mq {
+
+  } */
 
 //media query
 @mixin mq {

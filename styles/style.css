@@ -461,6 +461,57 @@ l-container
   margin-bottom: 20px;
 }
 
+/* flex display
+```
+<div class="l-flex l-flex-fig l-flex-fig-l">
+  <div class="txt">
+    <p>●</p>
+  </div>
+  <figure><img src="../images/flow/img02.jpg" alt=""></figure>
+</div>
+.l-flex {
+  display: flex;
+}
+```
+*/
+/* flex display with figure and text */
+.l-flex-fig figure {
+  padding-left: 30px;
+}
+
+.l-flex-fig-l figure {
+  padding-left: 0;
+  padding-right: 30px;
+  -webkit-box-ordinal-group: 2;
+  -webkit-order: 1;
+  -ms-flex-order: 1;
+  order: 1;
+}
+
+.l-flex-fig-l .txt {
+  -webkit-box-ordinal-group: 3;
+  -webkit-order: 2;
+  -ms-flex-order: 2;
+  order: 2;
+}
+
+/* flex display with space between attr */
+.l-flex-row {
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+/* flex display column display */
+.l-flex-col {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
 /* flexbox */
 .flex {
   /* display: flex; */
@@ -618,6 +669,28 @@ l-container
 }
 
 /* ##list */
+/* ###list_def
+```
+  <ul class="list_def">
+    <li>list_def</li>
+  </ul>
+```
+ */
+.list_def li {
+  position: relative;
+  padding-left: 10px;
+}
+.list_def li:before {
+  position: absolute;
+  left: 0;
+  top: 10px;
+  background: #000;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  content: "";
+}
+
 /* ###list_arrow
 ```
   <div class="list_arrow">
