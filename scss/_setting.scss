@@ -19,18 +19,7 @@ $breakPoint:768px;
 $contentWidth:980px;
 $contentWidthSP:94%;
 
-//extend
-%bgWhiteLink {
-  display: block;
-  background-color: #fff;
-}
 
-%linkText {
-  text-decoration: underline;
-  &:hover {
-    text-decoration: none;
-  }
-}
 
 %listMarkSq {
   &:before {
@@ -49,17 +38,74 @@ white-space: nowrap;
 overflow: hidden;
 }
 
-//mixin
 
-/*
-  @include mq {
+@mixin fz($size) {
+  font-size: $size + px;
+  font-size: ($size / 10) * 1rem;
+}
 
-  } */
+@mixin serif {
+  font-family: "游明朝", YuMincho, serif;
+  font-weight: 500;
+}
 
-//media query
-@mixin mq {
-  @media only screen and (max-width: $breakPoint) {
-    @content
+@mixin sans {
+  font-family: "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+
+@mixin bgWhiteLink {
+  display: block;
+  background-color: #fff;
+}
+
+@mixin linkText {
+  text-decoration: underline;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+@mixin lmSquare {
+  &:before {
+    content: '■';
+  }
+}
+
+@mixin lmArrowB {
+  &:before {
+    content: '>';
+  }
+}
+
+@mixin lmArrowA {
+  &:after {
+    content: ' >';
+  }
+}
+
+@mixin adjustImg {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  &:before {
+    content: " ";
+    display: block;
+    padding-top: 66.66%;
+  }
+  img {
+    height: 100%;
+    width: auto;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    &.is-vertical {
+      width: 100%;
+      height: auto;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
   }
 }
 
@@ -70,7 +116,9 @@ overflow: hidden;
   }
 }
 
-@mixin fz($size) {
-  font-size: $size + px;
-  font-size: ($size / 10) * 1rem;
+//media query
+@mixin mq {
+  @media only screen and (max-width: $breakPoint) {
+    @content
+  }
 }

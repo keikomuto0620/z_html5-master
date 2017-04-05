@@ -19,7 +19,6 @@ l-container
 .l-container {
   margin: 0 auto;
   width: $contentWidth;
-  border: 1px solid #000;
   @include mq {
     width: $contentWidthSP;
   }
@@ -106,13 +105,14 @@ l-container
   }
 }
 
+
 /* flex display
 ```
-<div class="l-flex l-flex-fig l-flex-fig-l">
-  <div class="txt">
+<div class="l-flex l-flex-l">
+  <div class="l-flex__txt">
     <p>●</p>
   </div>
-  <figure><img src="../images/flow/img02.jpg" alt=""></figure>
+  <figure class="l-flex__fig"><img src="../images/flow/img02.jpg" alt=""></figure>
 </div>
 .l-flex {
   display: flex;
@@ -120,26 +120,39 @@ l-container
 ```
 */
 
+
 /* flex display with figure and text */
-.l-flex-fig figure {
-  padding-left: 30px;
+
+.l-flex {
+  display: flex;
+  justify-content: space-between;
+  .l-flex__fig {
+    padding-left: 3.13vw;
+  }
 }
 
-.l-flex-fig-l figure {
-  padding-left: 0;
-  padding-right: 30px;
-  order: 1;
+.l-flex-l {
+  .l-flex__fig {
+    padding-left: 0;
+    padding-right: 3.13vw;
+    order: 1;
+  }
+  .l-flex__txt {
+    order: 2;
+  }
 }
 
-.l-flex-fig-l .txt {
-  order: 2;
-}
+
 /* flex display with space between attr */
-.l-flex-row {
+
+.l-flex--row {
   justify-content: space-between;
 }
+
+
 /* flex display column display */
-.l-flex-col {
+
+.l-flex--col {
   flex-direction: column;
 }
 
@@ -149,50 +162,52 @@ l-container
 .flex {
   /* display: flex; */
   display: flex;
-  /* flex-direction: column; */
+  /* flex-direction */
+  flex-direction: row;
   flex-direction: column;
-  /* justify-content: space-between; */
-  justify-content: space-between;
-  /* justify-content: space-around; */
-  justify-content: space-around;
-  /* justify-content: flex-start; */
+  flex-direction: row-reverse;
+  flex-direction: column-reverse;
+  /* flex-wrap */
+  flex-wrap: nowrap;
+  flex-wrap: wrap;
+  flex-wrap: wrap-reverse;
+  /* flex-flow direction,wrapをまとめて記述*/
+  flex-flow: column wrap;
+  /* justify-content 水平方向の揃え方 */
   justify-content: flex-start;
-  /* justify-content: flex-end; */
   justify-content: flex-end;
+  justify-content: space-between;
+  justify-content: space-around;
+
+  /* align-items 垂直方向の揃え方*/
+  align-items: flex-start;
+  align-items: flex-end;
+  align-items: center;
+  align-items: baseline;
+  align-items: stretch;//Flexアイテムの高さが設定されているとき上下一杯まで広げる。設定されていない場合、コンテンツの一番多いFlexアイテムの高さに合わせて自動的に広げる。
+  /* align-content 複数行になったときの揃え方*/
+  align-content:flex-start;
+  align-content:flex-end;
+  align-content:center;
+  align-content:space-between;
+  align-content:fspace-around;
+}
+.FlexItem {
+  flex-grow:1;
+  flex-shrink:1;
+  flex-basis:0;
+  /* flex: 0 1 8.33em; */
+  flex: 0 1 8.33em;
+  /* align-self */
+  align-self: flex-start;
+  align-self: flex-end;
+  align-self: center;
+  align-self: baseline;
+  align-self: stretch;
   /* order: 1 */
   order: 1;
   /* order: 2 */
   order: 2;
   /* order: 3 */
   order: 3;
-  /* flex-wrap: wrap; */
-  flex-wrap: wrap;
-  /* align-items: flex-start; */
-  align-items: flex-start;
-  /* align-items: flex-end; */
-  align-items: flex-end;
-  /* align-items: center; */
-  align-items: center;
-  /* align-items: baseline; */
-  align-items: baseline;
-    /* align-self: center; */
-  align-self: center;
-  /* flex: 1; */
-  flex: 1;
-  /* flex: 0 1 8.33em; */
-  flex: 0 1 8.33em;
 }
-
-/* transition */
-
-.transition {
-  opacity: 0.1;
-  transform: translate(0, 50px);
-  transition: all 500ms;
-}
-/* transform */
-  .case .case__photo img {
-    transform: translateY(-50%);
-  }
-
-

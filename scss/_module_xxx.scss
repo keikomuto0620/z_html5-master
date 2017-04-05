@@ -62,26 +62,33 @@
 
 /* ##list */
 
-/* ###list_def
+/* ###defList
 ```
-  <ul class="list_def">
-    <li>list_def</li>
+  <ul class="defList">
+    <li>defList</li>
   </ul>
 ```
  */
-.list_def li {
+
+/* defList*/
+
+.defList {
+  li {
     position: relative;
-    padding-left: 10px;
+    padding-left: 1em;
+    margin-bottom: .2em;
+    line-height: 1.66;
     &:before {
-        position: absolute;
-        left: 0;
-        top: 10px;
-        background: #000;
-        width: 2px;
-        height: 2px;
-        border-radius: 50%;
-        content: "";
+      position: absolute;
+      left: 0;
+      top: .5em;
+      background: #000;
+      width: 2px;
+      height: 2px;
+      border-radius: 50%;
+      content: "";
     }
+  }
 }
 /* flex list */
 
@@ -89,8 +96,11 @@
   display: flex;
   justify-content: space-between;
   flex-flow: wrap;
+  >* {
+    width: 48%;
+    margin-bottom: 3.33vw;
+  }
 }
-
 /* ###list_arrow
 ```
   <div class="list_arrow">
@@ -199,35 +209,6 @@
 
 /* ##boxs */
 
-/* flex display with image
-```
-<div class="l-flex l-flex-l">
-  <div class="txt">
-    <p>●</p>
-  </div>
-  <aside class="fig"><img src="../images/greeting/img01.jpg" alt=""></aside>
-</div>
-```
-*/
-
-.l-flex {
-  display: flex;
-  justify-content: space-between;
-}
-
-.l-flex .fig {
-  padding-left: 10px;
-}
-
-.l-flex-l .fig {
-  padding-left: 0;
-  padding-right: 10px;
-  order: 1;
-}
-
-.l-flex-l .txt {
-  order: 2;
-}
 
 
 /* ###gmap

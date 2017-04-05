@@ -44,14 +44,14 @@ gulp.task('styledocco', function () {
 //task
 gulp.task("default", ['server'], function() {
 	gulp.watch('**/scss/**/*.scss', ['compass']);
-	gulp.watch(['**/styles/style.css','*.md'], ['styledocco']);
-	gulp.watch(['**/styles/style.css','*.md']);
-	gulp.watch([
-		'**/*.html',
-		'**/*.jpg',
-		'**/*.png',
-		'**/*.gif',
-		'**/*.js',
-		'**/*.css'
-	], reload);
+	// gulp.watch(['**/styles/style.css','*.md'], ['styledocco']);
+	// gulp.watch(['**/styles/style.css','*.md']);
+	// gulp.watch([
+	// 	'**/*.html',
+	// 	'**/*.jpg',
+	// 	'**/*.png',
+	// 	'**/*.gif',
+	// 	'**/*.js',
+	// 	'**/*.css'
+	// ], reload);
 });
