@@ -4,8 +4,11 @@ var compass = require('gulp-compass')
 var browser = require("browser-sync");
 var autoprefixer = require('gulp-autoprefixer');
 var plumber = require('gulp-plumber');
-var styledocco = require('gulp-styledocco');
+// var styledocco = require('gulp-styledocco');
 var reload = browser.reload;
+var aigis = require("gulp-aigis");
+var rimraf = require('rimraf');
+
 //server
 gulp.task('server', function() {
 	browser({
@@ -15,6 +18,16 @@ gulp.task('server', function() {
 		port: 9900
 	});
 });
+
+gulp.task('clean', function (cb) {
+  rimraf('./styleguide', cb);
+});
+
+gulp.task("aigis", function() {
+    gulp.src("./aigis/aigis_config.yml")
+        .pipe(aigis());
+});
+
 // compass
 gulp.task('compass', function() {
 	gulp.src('./scss/*.scss')
@@ -34,16 +47,17 @@ gulp.task('compass', function() {
 });
 
 //styledocco
-gulp.task('styledocco', function () {
-  gulp.src('**/styles/style.css')
-    .pipe(styledocco({
-      out: 'docs',
-      name: 'style guide'
-    }));
-});
+// gulp.task('styledocco', function () {
+//   gulp.src('**/styles/style.css')
+//     .pipe(styledocco({
+//     }));
+// });
+
 //task
-gulp.task("default", ['server'], function() {
+gulp.task("default", //['server'],
+	function() {
 	gulp.watch('**/scss/**/*.scss', ['compass']);
+	gulp.watch(["**/scss/**/*.scss"], ["aigis"]);
 	// gulp.watch(['**/styles/style.css','*.md'], ['styledocco']);
 	// gulp.watch(['**/styles/style.css','*.md']);
 	// gulp.watch([

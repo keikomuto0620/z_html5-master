@@ -138,23 +138,23 @@
 ```
  */
 
-  figure {
-    position: relative;
-    overflow: hidden;
+/*   figure {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  &:before {
+    content: " ";
     display: block;
-    &:before {
-      content: " ";
-      display: block;
-      padding-top: 63.5%;
-    }
+    padding-top: 63.5%;
   }
-  img {
-    width: 100%;
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-  }
+img {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+} */
 
 /* ##link */
 

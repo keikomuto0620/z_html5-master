@@ -10,7 +10,7 @@
 - plugin プラグイン固有のスタイル
  - xxx プラグインごとにファイルを分ける
 - utility 調整用スタイル
-- print 印刷用スタイル
+- print 印刷用スタイル pri
 
 
 #命名規則
@@ -19,7 +19,7 @@
  - .l-moduleName
 
 ##モジュール 命名規則
-- 単語の区切りはキャメルケース
+- 基本はBEM、単語の区切りはキャメルケース
  - module（=block）とelementの区切りは__
  - module・elementとmodifierの区切りは--
 

@@ -6,17 +6,68 @@
 - サイト全体で使いまわせるレイアウトモジュール
 */
 
+/* flex display with image
+------------------------------- */
+/*
+---
+name: flex-fig
+category:
+  - mod
+  - mod/flex layout with image
+tag:
+  - latest
+  - base
+---
+- Base button style.
+- Use `a` or `button` tag.
 
-/* ###container
-- サイト共通幅・中央寄せコンテナ
-```
-<div class="l-container ">
-l-container
+```html
+<div class="l-flex l-flex-l">
+  <div class="l-flex__txt">
+    ▲
+  </div>
+  <figure class="l-flex__fig"><img src="../../../../images/img01.jpg" alt=""></figure>
+</div>
+
+<div class="l-flex">
+  <div class="l-flex__txt">
+    ▲
+  </div>
+  <figure class="l-flex__fig"><img src="../../../../images/img02.jpg" alt=""></figure>
 </div>
 ```
 */
 
-.l-container {
+.l-flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.l-flex .l-flex__fig {
+  padding-left: 10px;
+}
+
+.l-flex-l .l-flex__fig {
+  padding-left: 0;
+  padding-right: 10px;
+  order: 1;
+}
+
+.l-flex-l .l-flex__txt {
+  order: 2;
+}
+
+
+/* ###container
+- サイト共通幅・中央寄せコンテナ
+```
+<div class="l-com ">
+l-com
+</div>
+```
+*/
+
+.l-com {
   margin: 0 auto;
   width: $contentWidth;
   @include mq {
