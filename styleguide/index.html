@@ -15,14 +15,12 @@
   </header>
   <h2 class="aigis-sidemenu__heading">Category</h2>
   <nav class="aigis-categoryList">
-    <ul data-path-depth="0"><li data-path-depth="0"><a href="category\mod">mod</a><ul data-path-depth="1"><li data-path-depth="1"><a href="category\mod\flex-layout-with-image">flex layout with image</a></li></ul></li></ul>
+    <ul data-path-depth="0"><li data-path-depth="0"><a href="category\mod">mod</a><ul data-path-depth="1"><li data-path-depth="1"><a href="category\mod\flex-layout-with-image">flex layout with image</a></li><li data-path-depth="1"><a href="category\mod\test">test</a></li></ul></li></ul>
   </nav>
   <h2 class="aigis-sidemenu__heading">Tag</h2>
   <nav class="aigis-tags aigis-tagList">
     
       <a class="aigis-tags__item aigis-tags__item--base" href="./tag/base/index.html">base</a>
-    
-      <a class="aigis-tags__item aigis-tags__item--latest" href="./tag/latest/index.html">latest</a>
     
   </nav>
   <h2 class="aigis-sidemenu__heading"><a href="./color.html">All Colors</a></h2>
@@ -31,15 +29,103 @@
     <div class="aigis-contents">
       <div class="aigis-contents__body">
         
-  <h1 id="example-styleguide">Example Styleguide</h1>
-<h2 id="usage">Usage</h2>
-<pre><code>npm run aigis
-</code></pre><p>edit <code>css/style.css</code></p>
-<p><a href="https://pxgrid.github.io/aigis/doc/" title="null">doc</a></p>
+  <h1 id="scss-">scssファイル構成</h1>
+<ul>
+<li>base 基本設定 編集付加<ul>
+<li>normalize ブラウザ間の差異を吸収</li>
+<li>reset リセット用設定</li>
+</ul>
+</li>
+<li>setting 変数, mixin, extend, keyframeなどの設定</li>
+<li>common サイト全体の共通設定、ヘッダ・フッタなどの全ページ共通部品。</li>
+<li>layout_xxx サイト全体で使いまわせるレイアウトモジュール。数が多い時はモジュールごとにファイルを分ける。</li>
+<li>module_xxx サイト全体で使いまわせるモジュール。数が多い時はモジュールごとにファイルを分ける。</li>
+<li>page_xxx ページ固有の設定。数が多い時はページごとにファイルを分ける。</li>
+<li>plugin プラグイン固有のスタイル<ul>
+<li>xxx プラグインごとにファイルを分ける</li>
+</ul>
+</li>
+<li>utility 調整用スタイル</li>
+<li>print 印刷用スタイル</li>
+</ul>
+<h1 id="-">命名規則</h1>
+<h2 id="-">レイアウトモジュール 命名規則</h2>
+<ul>
+<li>単語の区切りはキャメルケース<ul>
+<li>.l-moduleName</li>
+</ul>
+</li>
+</ul>
+<h2 id="-">モジュール 命名規則</h2>
+<ul>
+<li>基本はBEM、単語の区切りはキャメルケース<ul>
+<li>module（=block）とelementの区切りは__</li>
+<li>module・elementとmodifierの区切りは--</li>
+</ul>
+</li>
+</ul>
+<p>例： .moduleName__elementName--modifierName</p>
+<ul>
+<li><p>jsによる状態の変化を表すときはプレフィクス-isをつける</p>
+<ul>
+<li>.is-inview 画面内に存在する状態／画面内に要素が入ったら不透明度を上げる [category.html、モーダルウィンドウ]</li>
+<li>.is-fixed 画面に固定された状態／ソートボタンを画面上部に固定する [category.html]</li>
+<li>.is-wide 画面幅が1440pxより大きい時／ソートボタンを中央寄せにする [category.html]</li>
+<li>.is-vertical 画像が縦長の時／ブレイクポイント以下でのデバイス表示時に画像の縦横比を判定 [category.html]</li>
+<li>.is-checked ソートボタンがアクティブな状態 [category.html]</li>
+</ul>
+</li>
+<li><p>jsで制御する要素にはプレフィクス-jsをつけ、スタイルは適用しない。操作する要素がページ内に一つしかないときはIDセレクタを使用する</p>
+<ul>
+<li>.js-menu</li>
+</ul>
+</li>
+</ul>
+<h1 id="-">画像ファイル名 命名規則</h1>
+<ul>
+<li>役割＿モジュール名＿固有名称（+連番）＿状態<ul>
+<li>img_header_facebook_hover.png</li>
+</ul>
+</li>
+<li>すべて小文字で記述する</li>
+</ul>
+<h3 id="-">役割（画像プレフィクス）</h3>
+<ul>
+<li>btn … ボタン</li>
+<li>bnr … バナー</li>
+<li>img … 写真、イラスト etc</li>
+<li>fig … 図 etc</li>
+<li>bg … 背景画像</li>
+<li>title … 見出し</li>
+<li>txt … テキスト画像</li>
+<li>hero … メインビジュアル</li>
+<li>ico … アイコン</li>
+</ul>
+<h1 id="js-">jsファイル構成</h1>
+<ul>
+<li><p>共通</p>
+<ul>
+<li>common.js</li>
+</ul>
+</li>
+<li><p>ページ固有</p>
+<ul>
+<li>index.js</li>
+<li>category.js</li>
+<li>case.js</li>
+</ul>
+</li>
+<li><p>プラグイン</p>
+<ul>
+<li>jquery.inview.min.js 画面内に要素が入っているかどうかの判定 [category.html,xxx.html]</li>
+<li>isotope.pkgd.min.js 要素のソート [category.html]</li>
+</ul>
+</li>
+</ul>
 
 
 
-        <footer class="aigis-footer">Last update at 2017/05/17 15:56</footer>
+        <footer class="aigis-footer">Last update at 2017/09/06 17:58</footer>
       </div>
     </div>
   </div>

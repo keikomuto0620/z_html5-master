@@ -458,11 +458,28 @@ body {
   margin: 0 auto; }
 .aigis-contents__body > *:first-child {
   margin-top: 0; }
-.aigis-contents__body > ul {
-  font-size: 16px; }
+.aigis-contents__body ul {
+  font-size: 16px;
+  line-height: 1.5;
+  margin:0 0 1em 1em;}
+.aigis-contents__body ul li{
+  list-style-type: disc; }
+.aigis-contents__body ul ul {
+  margin-left: 1em; }
+.aigis-contents__body ul ul li {
+  list-style-type: circle; }
 .aigis-contents__body > p {
   margin-bottom: 1em; }
+.aigis-contents__body > h1 {
+  font-size: 35px;
+  border-left: 10px solid #5f1985;
+  padding-left: .3em;
+  margin: .5em 0; }
 .aigis-contents__body > h2 {
-  font-size: 30px; }
+  font-size: 25px;
+  border-bottom: 1px solid #5f1985;
+  padding-bottom: .5em;
+  margin: .5em; }
 .aigis-contents__body > h3 {
-  font-size: 24px; }
+  font-size: 15px;
+  margin: .5em; }

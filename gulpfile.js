@@ -40,7 +40,11 @@ gulp.task('compass', function() {
 	.pipe(autoprefixer({
 			// ☆IEは9以上、Androidは4以上、iOS Safariは8以上
 			// その他は最新2バージョンで必要なベンダープレフィックスを付与する設定
-			browsers: ["last 2 versions", "Android >= 4","ios_saf >= 8"],
+			browsers: ["last 2 versions",
+'ie 11',
+  'ie 10'
+			 // ,"Android >= 4","ios_saf >= 8"
+			 ],
 			cascade: false
 		}))
 	.pipe(gulp.dest('css'));;
@@ -54,11 +58,10 @@ gulp.task('compass', function() {
 // });
 
 //task
-gulp.task("default", //['server'],
+gulp.task("default", ['server','clean'],
 	function() {
 	gulp.watch('**/scss/**/*.scss', ['compass']);
-	gulp.watch(["**/scss/**/*.scss"], ["aigis"]);
-	// gulp.watch(['**/styles/style.css','*.md'], ['styledocco']);
+	gulp.watch(['**/scss/**/*.scss','**/scss/**/*.scss','**/*.md'], ['aigis']);
 	// gulp.watch(['**/styles/style.css','*.md']);
 	// gulp.watch([
 	// 	'**/*.html',

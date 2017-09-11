@@ -15,9 +15,9 @@ source:
 # The types that aigis will scan to document comment
 source_type:
   - .css
-  - .sass
+#  - .sass
   - .scss
-  - .styl
+#  - .styl
 # If you want to generate documents from markdown
 # source_type: .md
 
@@ -29,6 +29,7 @@ dest: ../styleguide
 dependencies:
   - ./aigis_assets
   - ../css
+  - ../images
 
 # Index page created from markdown file
 index: ./index.md
@@ -67,6 +68,8 @@ component_dir: ./html
 output_collection:
   - category
   - tag
+  - version
+  - iroiro
 
 highlight: true
 highlight_theme: monokai

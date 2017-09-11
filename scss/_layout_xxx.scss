@@ -6,6 +6,7 @@
 - サイト全体で使いまわせるレイアウトモジュール
 */
 
+
 /* flex display with image
 ------------------------------- */
 /*
@@ -15,25 +16,26 @@ category:
   - mod
   - mod/flex layout with image
 tag:
-  - latest
   - base
+version: 2
 ---
-- Base button style.
-- Use `a` or `button` tag.
+画像+テキストのレイアウト
+* l-flexをつけたブロックは画像が右側に配置される
+* l-flex-lを追加すると左側に配置される
 
 ```html
 <div class="l-flex l-flex-l">
   <div class="l-flex__txt">
     ▲
   </div>
-  <figure class="l-flex__fig"><img src="../../../../images/img01.jpg" alt=""></figure>
+  <figure class="l-flex__fig"><img src="/images/img01.jpg" alt=""></figure>
 </div>
 
 <div class="l-flex">
   <div class="l-flex__txt">
     ▲
   </div>
-  <figure class="l-flex__fig"><img src="../../../../images/img02.jpg" alt=""></figure>
+  <figure class="l-flex__fig"><img src="/images/img02.jpg" alt=""></figure>
 </div>
 ```
 */
@@ -195,7 +197,27 @@ l-com
 
 
 /* flex display with space between attr */
-
+/*
+---
+name: test
+category:
+  - mod
+  - mod/test
+tag:
+  - base
+version: 2
+iroiro:
+  - mod
+---
+```html
+<div class="l-flex l-flex-l">
+  <div class="l-flex__txt">
+    ▲
+  </div>
+  <figure class="l-flex__fig"><img src="/images/img01.jpg" alt=""></figure>
+</div>
+```
+*/
 .l-flex--row {
   justify-content: space-between;
 }
