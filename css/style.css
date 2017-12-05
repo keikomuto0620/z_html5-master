@@ -319,7 +319,7 @@ body {
   line-height: 1;
   min-width: 980px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (min-width: 768px) {
   body {
     width: 100%;
     min-width: 100%;
@@ -439,7 +439,7 @@ l-com
   margin: 0 auto;
   width: 980px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (min-width: 768px) {
   .l-com {
     width: 94%;
   }
@@ -877,6 +877,120 @@ img {
   height: 100%;
 }
 
+.hovop a {
+  text-decoration: none;
+}
+.hovop a:hover {
+  opacity: .5;
+}
+
+.hovline a {
+  text-decoration: underline;
+}
+.hovline a:hover {
+  text-decoration: none;
+}
+
+.hovbtn {
+  background-image: url(ico_s_entry.png);
+  background-repeat: no-repeat;
+}
+.hovbtn > a {
+  transition: 1s;
+  display: block;
+}
+.hovbtn > a:hover {
+  opacity: 0;
+}
+
+.hovbgwhite {
+  display: block;
+  background-color: #fff;
+}
+
+.hovimg a img {
+  transition: 1s;
+}
+.hovimg a:hover img {
+  opacity: .6;
+}
+
+.lmico {
+  background-image: url(img/ico_s_entry.png);
+  background-repeat: no-repeat;
+  background-position: 93% 50%;
+}
+
+.lmSquare:before {
+  content: '■';
+}
+
+.lmArrow:after {
+  content: ' >';
+}
+
+.lmCircle li {
+  position: relative;
+  padding-left: 27px;
+}
+.lmCircle li:before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 8px;
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ccc;
+}
+
+.lmNum ol {
+  counter-reset: ol_li;
+}
+.lmNum ol li {
+  margin-left: 26px;
+}
+.lmNum ol li:before {
+  counter-increment: ol_li;
+  content: counter(ol_li) ".";
+  display: inline-block;
+  margin: 3px 9px 0 -23px;
+}
+
+.placeholderColor:placeholder-shown {
+  color: #ccc;
+}
+.placeholderColor::-webkit-input-placeholder {
+  color: #ccc;
+}
+
+.adjustImg {
+  position: relative;
+  overflow: hidden;
+  display: block;
+}
+.adjustImg:before {
+  content: " ";
+  display: block;
+  padding-top: 66.66%;
+}
+.adjustImg img {
+  height: 100%;
+  width: auto;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+}
+.adjustImg img.is-vertical {
+  width: 100%;
+  height: auto;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 /*
 #page xxx
 ===============================================
@@ -920,7 +1034,7 @@ img {
   line-height: 1.5;
   margin: 0;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (min-width: 768px) {
   .showList li {
     overflow: hidden;
     line-height: 2;

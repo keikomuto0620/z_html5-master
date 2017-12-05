@@ -50,18 +50,11 @@ gulp.task('compass', function() {
 	.pipe(gulp.dest('css'));;
 });
 
-//styledocco
-// gulp.task('styledocco', function () {
-//   gulp.src('**/styles/style.css')
-//     .pipe(styledocco({
-//     }));
-// });
-
 //task
 gulp.task("default", ['server','clean'],
 	function() {
 	gulp.watch('**/scss/**/*.scss', ['compass']);
-	gulp.watch(['**/scss/**/*.scss','**/scss/**/*.scss','**/*.md'], ['aigis']);
+	//gulp.watch(['**/scss/**/*.scss','**/scss/**/*.scss','**/*.md'], ['aigis']);
 	// gulp.watch(['**/styles/style.css','*.md']);
 	// gulp.watch([
 	// 	'**/*.html',

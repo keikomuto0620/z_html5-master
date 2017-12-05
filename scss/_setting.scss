@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+
 /*
 #setting
 ===============================================
@@ -19,106 +20,242 @@ $breakPoint:768px;
 $contentWidth:980px;
 $contentWidthSP:94%;
 
-
-
-%listMarkSq {
-  &:before {
-    content: '■';
-  }
-}
-
-%gothic {
-  font-family: "游ゴシック", "YuGothic", "ヒラギノ角ゴシック", Hiragino Sans, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif;
-  font-weight: 500;
-}
-
-%replace {
-text-indent: 100%;
-white-space: nowrap;
-overflow: hidden;
-}
-
-
-@mixin fz($size) {
-  font-size: $size + px;
-  font-size: ($size / 10) * 1rem;
-}
-
+//font-family
+// ===============================================
 @mixin serif {
-  font-family: "游明朝", YuMincho, serif;
-  font-weight: 500;
+    font-family: "游明朝", YuMincho, serif;
+    font-weight: 500;
 }
 
 @mixin sans {
-  font-family: "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+    font-family: "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
 }
 
-@mixin bgWhiteLink {
-  display: block;
-  background-color: #fff;
+%gothic {
+    font-family: "游ゴシック", "YuGothic", "ヒラギノ角ゴシック", Hiragino Sans, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif;
+    font-weight: 500;
 }
 
-@mixin linkText {
-  text-decoration: underline;
-  &:hover {
-    text-decoration: none;
-  }
+%roboto {
+    font-family: Roboto, sans-serif;
+    font-weight: bold;
+}
+
+// @mixin min {
+//     font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", serif;
+// }
+// @mixin fz($size) {
+//   font-size: $size + px;
+//   font-size: ($size / 10) * 1rem;
+// }
+// @mixin min {
+//     font-family: "HG明朝E", "ヒラギノ明朝 Pro W3", serif;
+// }
+//border-radius
+// ===============================================
+@mixin radius($radius) {
+    border-radius: $radius;
+}
+
+// 記述方法 @include radius(4px);
+@mixin radius5 {
+    border-radius: 5px;
+}
+
+@mixin radius10 {
+    border-radius: 10px;
+}
+
+@mixin radius15 {
+    border-radius: 15px;
+}
+
+@mixin radius20 {
+    border-radius: 20px;
+}
+
+//box-shadow
+// ===============================================
+@mixin shadow($len1:0, $len2:2px, $len3:2px) {
+    box-shadow: $len1 $len2 $len3 rgba($gray, .5);
+}
+
+//hover effect
+// ===============================================
+@mixin hovop {
+    a {
+        text-decoration: none;
+        &:hover {
+            opacity: .5;
+        }
+    }
+}
+
+@mixin hovline {
+    a {
+        text-decoration: underline;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+@mixin hovimg {
+    a {
+        img {
+            transition: 1s;
+        }
+        &:hover img {
+            opacity: .6;
+        }
+    }
+}
+@mixin hovbtn($img) {
+    background-image: url(#{$img});
+    background-repeat: no-repeat;
+    >a {
+        transition: 1s;
+        display: block;
+        &:hover {
+            opacity: 0;
+        }
+    }
+}
+@mixin hovbgwhite {
+    display: block;
+    background-color: #fff;
+}
+
+
+
+
+//list
+// ===============================================
+@mixin lmico($bg, $pos1:0, $pos2:50%) {
+    background-image: url(img/#{$bg});
+    background-repeat: no-repeat;
+    background-position: $pos1 $pos2;
 }
 
 @mixin lmSquare {
-  &:before {
-    content: '■';
-  }
+    &:before {
+        content: '■';
+    }
 }
 
-@mixin lmArrowB {
-  &:before {
-    content: '>';
-  }
+@mixin lmArrow {
+    &:after {
+        content: ' >';
+    }
 }
 
-@mixin lmArrowA {
-  &:after {
-    content: ' >';
-  }
+@mixin lmCircle($collor:#ccc,$left:4px,$top:8px,$w:10px)  {
+    li {
+        position: relative;
+        padding-left: 27px;
+        &:before {
+            content: '';
+            position: absolute;
+            left: $left;
+            top: $top;
+            display: block;
+            width: $w;
+            height: $w;
+            border-radius: 50%;
+            background-color: $collor;
+        }
+    }
+}
+
+@mixin lmNum {
+    ol {
+        counter-reset: ol_li;
+        li {
+            margin-left: 26px;
+            &:before {
+                // color: #694d37;
+                // font-weight: bold;
+                counter-increment: ol_li;
+                content: counter(ol_li)'.';
+                display: inline-block;
+                margin: 3px 9px 0 -23px;
+            }
+        }
+    }
+}
+
+//other
+// ===============================================
+// @mixin flex {
+//     display: flex;
+//     justify-content: space-between;
+// }
+
+@mixin placeholderColor($color) {
+    &:placeholder-shown {
+        color: $color;
+    }
+    &::-webkit-input-placeholder {
+        color: $color;
+    }
 }
 
 @mixin adjustImg {
-  position: relative;
-  overflow: hidden;
-  display: block;
-  &:before {
-    content: " ";
+    position: relative;
+    overflow: hidden;
     display: block;
-    padding-top: 66.66%;
-  }
-  img {
-    height: 100%;
-    width: auto;
-    position: absolute;
-    left: 50%;
-    top: 0;
-    transform: translateX(-50%);
-    &.is-vertical {
-      width: 100%;
-      height: auto;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
+    &:before {
+        content: " ";
+        display: block;
+        padding-top: 66.66%;
     }
-  }
+    img {
+        height: 100%;
+        width: auto;
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translateX(-50%);
+        &.is-vertical {
+            width: 100%;
+            height: auto;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
 }
 
 //body class
 @mixin kaori {
-  .body--kaori & {
-    @content
-  }
+    .body--kaori & {
+        @content
+    }
+}
+
+
+%replace {
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 //media query
+//tablet 480~
 @mixin mq {
-  @media only screen and (max-width: $breakPoint) {
-    @content
-  }
+    @media only screen and (min-width: $breakPoint) {
+        @content
+    }
+}
+
+//pc 768~
+@mixin mq_pc {
+    @media only screen and (min-width: $breakPoint02) {
+        @content
+    }
+}
+
+@mixin mq_pcl {
+    @media only screen and (min-width: $contentWidth) {
+        @content
+    }
 }
