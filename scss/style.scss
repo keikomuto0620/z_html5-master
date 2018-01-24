@@ -1,11 +1,11 @@
 @charset "UTF-8";
 
-// setting
-@import 'setting';
-
 // base
 @import 'base/normalize';
 @import 'base/reset';
+
+// setting
+@import 'setting';
 
 // common
 @import 'common';
@@ -22,7 +22,11 @@
 // plugins
 @import 'plugin/bxslider';
 
+// utility
+@import 'utility';
+
+
+
 // print
 @import 'print';
-
 /*@ sourceMappingURL=style.css.map */

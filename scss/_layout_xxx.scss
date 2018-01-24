@@ -6,23 +6,87 @@
 - サイト全体で使いまわせるレイアウトモジュール
 */
 
-/* ###container
-- サイト共通幅・中央寄せコンテナ
-```
-<div class="l-container ">
-l-container
+
+/* flex display with image
+------------------------------- */
+/*
+---
+name: flex-fig
+category:
+  - mod
+  - mod/flex layout with image
+tag:
+  - base
+version: 2
+---
+画像+テキストのレイアウト
+* l-flexをつけたブロックは画像が右側に配置される
+* l-flex-lを追加すると左側に配置される
+
+```html
+<div class="l-flex l-flex-l">
+  <div class="l-flex__txt">
+    ▲
+  </div>
+  <figure class="l-flex__fig"><img src="/images/img01.jpg" alt=""></figure>
+</div>
+
+<div class="l-flex">
+  <div class="l-flex__txt">
+    ▲
+  </div>
+  <figure class="l-flex__fig"><img src="/images/img02.jpg" alt=""></figure>
 </div>
 ```
 */
 
-.l-container {
+.l-flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.l-flex .l-flex__fig {
+  padding-left: 10px;
+}
+
+.l-flex-l .l-flex__fig {
+  padding-left: 0;
+  padding-right: 10px;
+  order: 1;
+}
+
+.l-flex-l .l-flex__txt {
+  order: 2;
+}
+
+
+/* ###container
+- サイト共通幅・中央寄せコンテナ
+```
+<div class="l-com ">
+l-com
+</div>
+```
+*/
+
+.l-com {
   margin: 0 auto;
   width: $contentWidth;
-  border: 1px solid #000;
-    @include mq {
-    width: 94%;
+  @include mq {
+    width: $contentWidthSP;
   }
 }
+
+
+/* ##グリッドレイアウト */
+
+%colwrap {
+  display: flex;
+  flex-flow: row wrap;
+  margin-left: -2%;
+}
+
+
 /* ###l-col2
 - 2カラムレイアウト
 ```
@@ -38,16 +102,14 @@ l-container
 */
 
 .l-col2 {
-  @extend %col2wrap;
+  @extend %colwrap;
   .col {
-    @extend %col2;
+    width: 48%;
+    margin-left: 2%;
     margin-bottom: 20px;
-    img {
-      width: 100%;
-      height: auto;
-    }
   }
 }
+
 
 /* ###l-col3
 - 2カラムレイアウト
@@ -64,16 +126,14 @@ l-container
 */
 
 .l-col3 {
-  @extend %col3wrap;
+  @extend %colwrap;
   .col {
-    @extend %col3;
+    margin-left: 2%;
+    width: 31.3333333%;
     margin-bottom: 20px;
-    img {
-      width: 100%;
-      height: auto;
-    }
   }
 }
+
 
 /* ###l-col4
 - 4カラムレイアウト
@@ -90,13 +150,137 @@ l-container
 */
 
 .l-col4 {
-  @extend %col4wrap;
+  @extend %colwrap;
   .col {
-    @extend %col4;
+    margin-left: 2%;
+    width: 23%;
     margin-bottom: 20px;
-    img {
-      width: 100%;
-      height: auto;
-    }
   }
+}
+
+
+/* flex display
+```
+<div class="l-flex l-flex-l">
+  <div class="l-flex__txt">
+    <p>●</p>
+  </div>
+  <figure class="l-flex__fig"><img src="../images/flow/img02.jpg" alt=""></figure>
+</div>
+.l-flex {
+  display: flex;
+}
+```
+*/
+
+
+/* flex display with figure and text */
+
+.l-flex {
+  display: flex;
+  justify-content: space-between;
+  .l-flex__fig {
+    padding-left: 3.13vw;
+  }
+}
+
+.l-flex-l {
+  .l-flex__fig {
+    padding-left: 0;
+    padding-right: 3.13vw;
+    order: 1;
+  }
+  .l-flex__txt {
+    order: 2;
+  }
+}
+
+
+/* flex display with space between attr */
+/*
+---
+name: test
+category:
+  - mod
+  - mod/test
+tag:
+  - base
+version: 2
+iroiro:
+  - mod
+---
+```html
+<div class="l-flex l-flex-l">
+  <div class="l-flex__txt">
+    ▲
+  </div>
+  <figure class="l-flex__fig"><img src="/images/img01.jpg" alt=""></figure>
+</div>
+```
+*/
+.l-flex--row {
+  justify-content: space-between;
+}
+
+
+/* flex display column display */
+
+.l-flex--col {
+  flex-direction: column;
+}
+
+
+/* flexbox */
+
+.flex {
+  /* display: flex; */
+  display: flex;
+  /* flex-direction */
+  flex-direction: row;
+  flex-direction: column;
+  flex-direction: row-reverse;
+  flex-direction: column-reverse;
+  /* flex-wrap */
+  flex-wrap: nowrap;
+  flex-wrap: wrap;
+  flex-wrap: wrap-reverse;
+  /* flex-flow direction,wrapをまとめて記述*/
+  flex-flow: column wrap;
+  /* justify-content 水平方向の揃え方 */
+  justify-content: flex-start;
+  justify-content: flex-end;
+  justify-content: space-between;
+  justify-content: space-around;
+
+  /* align-items 垂直方向の揃え方*/
+  align-items: flex-start;
+  align-items: flex-end;
+  align-items: center;
+  align-items: baseline;
+  align-items: stretch;//Flexアイテムの高さが設定されているとき上下一杯まで広げる。設定されていない場合、コンテンツの一番多いFlexアイテムの高さに合わせて自動的に広げる。
+  /* align-content 複数行になったときの揃え方*/
+  align-content:flex-start;
+  align-content:flex-end;
+  align-content:center;
+  align-content:space-between;
+  align-content:fspace-around;
+}
+.FlexItem {
+  flex-grow:1;
+  flex-shrink:1;
+  flex-basis:0;
+  /* flex: 0 1 8.33em; */
+  flex: 0 1 8.33em;
+  /* align-self */
+  align-self: flex-start;
+  align-self: flex-end;
+  align-self: center;
+  align-self: baseline;
+  align-self: stretch;
+  /* order: 1 */
+  order: 1;
+  /* order: 2 */
+  order: 2;
+  /* order: 3 */
+  order: 3;
 }

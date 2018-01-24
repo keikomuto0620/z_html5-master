@@ -1,52 +1,10 @@
 @charset "UTF-8";
-.l-col2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-flow: row wrap;
-  -ms-flex-flow: row wrap;
-  flex-flow: row wrap;
-  margin-left: -2%;
-}
 
-.l-col2 .col {
-  width: 48%;
-  margin-left: 2%;
-}
 
-.l-col3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-flow: row wrap;
-  -ms-flex-flow: row wrap;
-  flex-flow: row wrap;
-  margin-left: -2%;
-}
-
-.l-col3 .col {
-  margin-left: 2%;
-  width: 31.3333333%;
-}
-
-.l-col4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-flow: row wrap;
-  -ms-flex-flow: row wrap;
-  flex-flow: row wrap;
-  margin-left: -2%;
-}
-
-.l-col4 .col {
-  margin-left: 2%;
-  width: 23%;
-}
-
+/*
+#normalize.css
+===============================================
+*/
 article,
 aside,
 details,
@@ -279,6 +237,10 @@ input[type="checkbox"], input[type="radio"] {
   padding: 0;
 }
 
+/*
+#reset.css
+===============================================
+*/
 a:active,
 a:hover {
   outline: 0;
@@ -334,9 +296,18 @@ img {
 }
 
 /*
+#setting
+===============================================
+- キーカラーの設定
+- コンテンツ幅、ブレイクポイントの設定
+- mixinの設定
+- キーフレームアニメーションの設定
+*/
+/*
 #common
 ===============================================
 - サイト全体の共通設定
+- レスポンシブ対応
 - 全ページ共通部品 (header, footer, sidebar, etc.)
 */
 html {
@@ -345,16 +316,18 @@ html {
 
 body {
   background-color: #fff;
-  color: #000;
   font-size: 1.4rem;
   font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", "MS Pゴシック", "MS P Gothic", sans-serif;
-  line-height: 1.6;
+  line-height: 1;
   min-width: 980px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (min-width: 768px) {
   body {
     width: 100%;
-    min-width: auto;
+    min-width: 100%;
+    overflow: hidden;
+    -webkit-text-size-adjust: 100%;
+    font-size: 1.3rem;
   }
 }
 
@@ -366,28 +339,121 @@ a:hover {
   text-decoration: underline;
 }
 
+/* responsive display */
+.sp {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .pc {
+    display: none;
+  }
+
+  .sp {
+    display: block;
+  }
+}
+.l-main {
+  display: block;
+}
+
+.btnPageUp {
+  background-image: url("../images/bg_pagetop.png");
+  background-repeat: no-repeat;
+  width: 162px;
+  height: 59px;
+  position: absolute;
+  top: -59px;
+  right: 0;
+  display: block;
+  text-align: center;
+}
+
 /*
 #layout_xxx
 ===============================================
 - サイト全体で使いまわせるレイアウトモジュール
 */
-/* ###container
-- サイト共通幅・中央寄せコンテナ
-```
-<div class="l-container ">
-l-container
+/* flex display with image
+------------------------------- */
+/*
+---
+name: flex-fig
+category:
+  - mod
+  - mod/flex layout with image
+tag:
+  - base
+version: 2
+---
+画像+テキストのレイアウト
+* l-flexをつけたブロックは画像が右側に配置される
+* l-flex-lを追加すると左側に配置される
+
+```html
+<div class="l-flex l-flex-l">
+  <div class="l-flex__txt">
+    ▲
+  </div>
+  <figure class="l-flex__fig"><img src="/images/img01.jpg" alt=""></figure>
+</div>
+
+<div class="l-flex">
+  <div class="l-flex__txt">
+    ▲
+  </div>
+  <figure class="l-flex__fig"><img src="/images/img02.jpg" alt=""></figure>
 </div>
 ```
 */
-.l-container {
+.l-flex {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.l-flex .l-flex__fig {
+  padding-left: 10px;
+}
+
+.l-flex-l .l-flex__fig {
+  padding-left: 0;
+  padding-right: 10px;
+  -ms-flex-order: 1;
+  order: 1;
+}
+
+.l-flex-l .l-flex__txt {
+  -ms-flex-order: 2;
+  order: 2;
+}
+
+/* ###container
+- サイト共通幅・中央寄せコンテナ
+```
+<div class="l-com ">
+l-com
+</div>
+```
+*/
+.l-com {
   margin: 0 auto;
   width: 980px;
-  border: 1px solid #000;
 }
-@media only screen and (max-width: 768px) {
-  .l-container {
+@media only screen and (min-width: 768px) {
+  .l-com {
     width: 94%;
   }
+}
+
+/* ##グリッドレイアウト */
+.l-col2, .l-col3, .l-col4 {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  margin-left: -2%;
 }
 
 /* ###l-col2
@@ -404,11 +470,9 @@ l-container
 ```
 */
 .l-col2 .col {
+  width: 48%;
+  margin-left: 2%;
   margin-bottom: 20px;
-}
-.l-col2 .col img {
-  width: 100%;
-  height: auto;
 }
 
 /* ###l-col3
@@ -425,11 +489,9 @@ l-container
 ```
 */
 .l-col3 .col {
+  margin-left: 2%;
+  width: 31.3333333%;
   margin-bottom: 20px;
-}
-.l-col3 .col img {
-  width: 100%;
-  height: auto;
 }
 
 /* ###l-col4
@@ -446,11 +508,165 @@ l-container
 ```
 */
 .l-col4 .col {
+  margin-left: 2%;
+  width: 23%;
   margin-bottom: 20px;
 }
-.l-col4 .col img {
-  width: 100%;
-  height: auto;
+
+/* flex display
+```
+<div class="l-flex l-flex-l">
+  <div class="l-flex__txt">
+    <p>●</p>
+  </div>
+  <figure class="l-flex__fig"><img src="../images/flow/img02.jpg" alt=""></figure>
+</div>
+.l-flex {
+  display: flex;
+}
+```
+*/
+/* flex display with figure and text */
+.l-flex {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+.l-flex .l-flex__fig {
+  padding-left: 3.13vw;
+}
+
+.l-flex-l .l-flex__fig {
+  padding-left: 0;
+  padding-right: 3.13vw;
+  -ms-flex-order: 1;
+  order: 1;
+}
+.l-flex-l .l-flex__txt {
+  -ms-flex-order: 2;
+  order: 2;
+}
+
+/* flex display with space between attr */
+/*
+---
+name: test
+category:
+  - mod
+  - mod/test
+tag:
+  - base
+version: 2
+iroiro:
+  - mod
+---
+```html
+<div class="l-flex l-flex-l">
+  <div class="l-flex__txt">
+    ▲
+  </div>
+  <figure class="l-flex__fig"><img src="/images/img01.jpg" alt=""></figure>
+</div>
+```
+*/
+.l-flex--row {
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+/* flex display column display */
+.l-flex--col {
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+/* flexbox */
+.flex {
+  /* display: flex; */
+  display: -ms-flexbox;
+  display: flex;
+  /* flex-direction */
+  -ms-flex-direction: row;
+  flex-direction: row;
+  flex-direction: column;
+  flex-direction: row-reverse;
+  flex-direction: column-reverse;
+  /* flex-wrap */
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-wrap: wrap-reverse;
+  flex-wrap: wrap-reverse;
+  /* flex-flow direction,wrapをまとめて記述*/
+  -ms-flex-flow: column wrap;
+  flex-flow: column wrap;
+  /* justify-content 水平方向の揃え方 */
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  /* align-items 垂直方向の揃え方*/
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -ms-flex-align: end;
+  align-items: flex-end;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  /* align-content 複数行になったときの揃え方*/
+  -ms-flex-line-pack: start;
+  align-content: flex-start;
+  -ms-flex-line-pack: end;
+  align-content: flex-end;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -ms-flex-line-pack: justify;
+  align-content: space-between;
+  -ms-flex-line-pack: fspace-around;
+  align-content: fspace-around;
+}
+
+.FlexItem {
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  /* flex: 0 1 8.33em; */
+  -ms-flex: 0 1 8.33em;
+  flex: 0 1 8.33em;
+  /* align-self */
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+  -ms-flex-item-align: end;
+  align-self: flex-end;
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
+  align-self: center;
+  -ms-flex-item-align: baseline;
+  align-self: baseline;
+  -ms-flex-item-align: stretch;
+  -ms-grid-row-align: stretch;
+  align-self: stretch;
+  /* order: 1 */
+  -ms-flex-order: 1;
+  order: 1;
+  /* order: 2 */
+  -ms-flex-order: 2;
+  order: 2;
+  /* order: 3 */
+  -ms-flex-order: 3;
+  order: 3;
 }
 
 /*
@@ -458,28 +674,6 @@ l-container
 ===============================================
 - サイト全体で使いまわせるモジュール
 */
-/* ##common class
-- ヘルパークラス、ユーティリティクラスなど
-*/
-.ofHiddn {
-  overflow: hidden;
-}
-
-.dispNone {
-  display: none;
-}
-
-.dd_flat {
-  display: inline-block;
-  margin-right: .5rem;
-}
-
-.bdr_red_box {
-  border: 1px solid #E50012;
-  padding: 1rem;
-  margin: 2rem 0;
-}
-
 /* ##headings
 - 見出し
 */
@@ -530,6 +724,45 @@ l-container
 }
 
 /* ##list */
+/* ###defList
+```
+  <ul class="defList">
+    <li>defList</li>
+  </ul>
+```
+ */
+/* defList*/
+.defList li {
+  position: relative;
+  padding-left: 1em;
+  margin-bottom: .2em;
+  line-height: 1.66;
+}
+.defList li:before {
+  position: absolute;
+  left: 0;
+  top: .5em;
+  background: #000;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  content: "";
+}
+
+/* flex list */
+.flexList {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -ms-flex-flow: wrap;
+  flex-flow: wrap;
+}
+.flexList > * {
+  width: 48%;
+  margin-bottom: 3.33vw;
+}
+
 /* ###list_arrow
 ```
   <div class="list_arrow">
@@ -558,6 +791,28 @@ l-container
   color: #5f1985;
 }
 
+/* ###thumbnail list
+```
+<figure><img></figure>
+```
+ */
+/*   figure {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  &:before {
+    content: " ";
+    display: block;
+    padding-top: 63.5%;
+  }
+img {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+} */
 /* ##link */
 /* ###linkEx
 ```
@@ -594,6 +849,13 @@ l-container
   filter: alpha(opacity=100);
 }
 
+.btn--disabled {
+  pointer-events: none;
+}
+.btn--disabled:hover {
+  background-color: transparent;
+}
+
 /* ##boxs */
 /* ###gmap
 ```
@@ -603,7 +865,6 @@ l-container
 .gmap {
   position: relative;
   padding-bottom: 56.25%;
-  padding-top: 30px;
   height: 0;
   overflow: hidden;
 }
@@ -616,6 +877,120 @@ l-container
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+.hovop a {
+  text-decoration: none;
+}
+.hovop a:hover {
+  opacity: .5;
+}
+
+.hovline a {
+  text-decoration: underline;
+}
+.hovline a:hover {
+  text-decoration: none;
+}
+
+.hovbtn {
+  background-image: url(ico_s_entry.png);
+  background-repeat: no-repeat;
+}
+.hovbtn > a {
+  transition: 1s;
+  display: block;
+}
+.hovbtn > a:hover {
+  opacity: 0;
+}
+
+.hovbgwhite {
+  display: block;
+  background-color: #fff;
+}
+
+.hovimg a img {
+  transition: 1s;
+}
+.hovimg a:hover img {
+  opacity: .6;
+}
+
+.lmico {
+  background-image: url(img/ico_s_entry.png);
+  background-repeat: no-repeat;
+  background-position: 93% 50%;
+}
+
+.lmSquare:before {
+  content: '■';
+}
+
+.lmArrow:after {
+  content: ' >';
+}
+
+.lmCircle li {
+  position: relative;
+  padding-left: 27px;
+}
+.lmCircle li:before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 8px;
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ccc;
+}
+
+.lmNum ol {
+  counter-reset: ol_li;
+}
+.lmNum ol li {
+  margin-left: 26px;
+}
+.lmNum ol li:before {
+  counter-increment: ol_li;
+  content: counter(ol_li) ".";
+  display: inline-block;
+  margin: 3px 9px 0 -23px;
+}
+
+.placeholderColor:placeholder-shown {
+  color: #ccc;
+}
+.placeholderColor::-webkit-input-placeholder {
+  color: #ccc;
+}
+
+.adjustImg {
+  position: relative;
+  overflow: hidden;
+  display: block;
+}
+.adjustImg:before {
+  content: " ";
+  display: block;
+  padding-top: 66.66%;
+}
+.adjustImg img {
+  height: 100%;
+  width: auto;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+}
+.adjustImg img.is-vertical {
+  width: 100%;
+  height: auto;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 /*
@@ -661,7 +1036,7 @@ l-container
   line-height: 1.5;
   margin: 0;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (min-width: 768px) {
   .showList li {
     overflow: hidden;
     line-height: 2;
@@ -689,8 +1064,6 @@ l-container
 
 .bx-wrapper .bx-viewport {
   background: #fff;
-  -webkit-transform: translatez(0);
-  -ms-transform: translatez(0);
   transform: translatez(0);
 }
 
@@ -735,6 +1108,30 @@ l-container
   color: #fff;
   display: block;
   padding: 10px;
+}
+
+/*
+#utility
+===============================================
+- ユーティリティクラス
+*/
+.ofHiddn {
+  overflow: hidden;
+}
+
+.dispNone {
+  display: none;
+}
+
+.dd_flat {
+  display: inline-block;
+  margin-right: .5rem;
+}
+
+.bdr_red_box {
+  border: 1px solid #E50012;
+  padding: 1rem;
+  margin: 2rem 0;
 }
 
 /*@ sourceMappingURL=style.css.map */

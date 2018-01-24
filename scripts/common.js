@@ -1,5 +1,7 @@
-$(function(){
-	
+(function($) {
+  $(function() {
+
+
 // smooth scroll
 $('a[href^=#]').click(function(){
 		var href= $(this).attr("href");
@@ -14,5 +16,6 @@ $('a[href^=#]').click(function(){
 if(location.pathname != "/") {
    $('#gNav a[href^="/' + location.pathname.split("/")[1] + '"]').addClass('current');
  } else $('#gNav a:eq(0)').addClass('current');
-		
-});
+
+  });
+}(jQuery));
