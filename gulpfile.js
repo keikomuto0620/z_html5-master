@@ -4,7 +4,6 @@ var compass = require('gulp-compass')
 var browser = require("browser-sync");
 var autoprefixer = require('gulp-autoprefixer');
 var plumber = require('gulp-plumber');
-// var styledocco = require('gulp-styledocco');
 var reload = browser.reload;
 var aigis = require("gulp-aigis");
 var rimraf = require('rimraf');
@@ -38,11 +37,7 @@ gulp.task('compass', function() {
 		css: 'css'
 	}))
 	.pipe(autoprefixer({
-			// ☆IEは9以上、Androidは4以上、iOS Safariは8以上
-			// その他は最新2バージョンで必要なベンダープレフィックスを付与する設定
-			browsers: ["last 2 versions",
-'ie 11',
-  'ie 10'
+			browsers: ["last 2 versions",'ie 11','ie 10'
 			 // ,"Android >= 4","ios_saf >= 8"
 			 ],
 			cascade: false
@@ -51,17 +46,19 @@ gulp.task('compass', function() {
 });
 
 //task
-gulp.task("default", ['server','clean'],
+gulp.task("default", ['server'
+	// ,'clean'
+	],
 	function() {
 	gulp.watch('**/scss/**/*.scss', ['compass']);
-	//gulp.watch(['**/scss/**/*.scss','**/scss/**/*.scss','**/*.md'], ['aigis']);
+	// gulp.watch(['**/scss/**/*.scss','**/scss/**/*.scss','**/*.md'], ['aigis']);
 	// gulp.watch(['**/styles/style.css','*.md']);
-	// gulp.watch([
-	// 	'**/*.html',
-	// 	'**/*.jpg',
-	// 	'**/*.png',
-	// 	'**/*.gif',
-	// 	'**/*.js',
-	// 	'**/*.css'
-	// ], reload);
+	gulp.watch([
+		'**/*.html',
+		'**/*.jpg',
+		'**/*.png',
+		'**/*.gif',
+		'**/*.js',
+		'**/*.css'
+	], reload);
 });
