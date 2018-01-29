@@ -1,7 +1,6 @@
 (function($) {
   $(function() {
 
-
 // smooth scroll
 $('a[href^=#]').click(function(){
 		var href= $(this).attr("href");
