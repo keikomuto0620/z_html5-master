@@ -1,12 +1,17 @@
 // autoprefixer, compass, reload
 var gulp = require('gulp');
 var compass = require('gulp-compass')
-var browser = require("browser-sync");
-var autoprefixer = require('gulp-autoprefixer');
+// var browser = require("browser-sync");
+// var autoprefixer = require('gulp-autoprefixer');
 var plumber = require('gulp-plumber');
-var reload = browser.reload;
+// var reload = browser.reload;
+//aigis
 var aigis = require("gulp-aigis");
 var rimraf = require('rimraf');
+// 画像を圧縮するプラグインの読み込み
+var imagemin = require("gulp-imagemin");
+var pngquant = require('imagemin-pngquant');
+var mozjpeg = require('imagemin-mozjpeg');
 
 //server
 gulp.task('server', function() {
@@ -45,20 +50,39 @@ gulp.task('compass', function() {
 	.pipe(gulp.dest('css'));;
 });
 
+// imagesフォルダのpng,jpg画像を圧縮して、minified_imageフォルダに保存する
+gulp.task("imgmin", function() { // 「imageMinTask」という名前のタスクを登録
+		gulp.src("img/**/*.{png,jpg}") // imagesフォルダ以下のpng,jpg画像を取得
+				.pipe(imagemin([
+						pngquant({
+								quality: '65-80',
+								speed: 1,
+								floyd: 0
+						}),
+						mozjpeg({
+								quality: 85,
+								progressive: true
+						}),
+						imagemin.svgo(),
+						imagemin.optipng(),
+						imagemin.gifsicle()
+				])) // 画像の圧縮処理
+				.pipe(gulp.dest("minified_image/")); //保存
+});
+
 //task
-gulp.task("default", ['server'
-	// ,'clean'
-	],
+gulp.task("default",
+	// ['server','clean'],
 	function() {
 	gulp.watch('**/scss/**/*.scss', ['compass']);
 	// gulp.watch(['**/scss/**/*.scss','**/scss/**/*.scss','**/*.md'], ['aigis']);
 	// gulp.watch(['**/styles/style.css','*.md']);
-	gulp.watch([
-		'**/*.html',
-		'**/*.jpg',
-		'**/*.png',
-		'**/*.gif',
-		'**/*.js',
-		'**/*.css'
-	], reload);
+	// gulp.watch([
+	// 	'**/*.html',
+	// 	'**/*.jpg',
+	// 	'**/*.png',
+	// 	'**/*.gif',
+	// 	'**/*.js',
+	// 	'**/*.css'
+	// ], reload);
 });
