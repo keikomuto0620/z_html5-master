@@ -52,7 +52,7 @@ gulp.task('compass', function() {
 
 // imagesフォルダのpng,jpg画像を圧縮して、minified_imageフォルダに保存する
 gulp.task("imgmin", function() { // 「imageMinTask」という名前のタスクを登録
-		gulp.src("img/**/*.{png,jpg}") // imagesフォルダ以下のpng,jpg画像を取得
+		gulp.src("img/**/*.{png,jpg,gif,svg}") // imagesフォルダ以下のpng,jpg画像を取得
 				.pipe(imagemin([
 						pngquant({
 								quality: '65-80',
