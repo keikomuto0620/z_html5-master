@@ -243,19 +243,19 @@ $contentWidthSP:94%;
 //tablet 480~
 @mixin mq {
     @media only screen and (min-width: $breakPoint) {
-        @content
+        @content;
     }
 }
 
 //pc 768~
 @mixin mq_pc {
     @media only screen and (min-width: $breakPoint02) {
-        @content
+        @content;
     }
 }
 
 @mixin mq_pcl {
     @media only screen and (min-width: $contentWidth) {
-        @content
+        @content;
     }
 }
